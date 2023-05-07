@@ -1,3 +1,5 @@
+import logging
+
 import aiogram
 from aiogram import types
 from aiogram.dispatcher.filters import Text
@@ -16,11 +18,16 @@ async def process_start_command(message: aiogram.types.Message):
     """
     Handle the /start command and send a message with the main keyboard.
     """
-    await message.answer(
-        '🤖 Hello! I am glad to help you get short info '
-        'about your Aurora farm.',
-        reply_markup=keyboard,
-    )
+    try:
+        await message.answer(
+            '🤖 Hello! I am glad to help you get short info '
+            'about your Aurora farm.',
+            reply_markup=keyboard,
+        )
+        logging.info('/start command processed')
+    except Exception as e:
+        await message.answer(f'Error: {e}')
+        logging.error(e)
 
 
 @dp.message_handler(Text(equals=['ℹ️Info']))
@@ -30,5 +37,7 @@ async def process_info_command(message: aiogram.types.Message):
     """
     try:
         await message.answer(get_message())
+        logging.info('ℹ️Info button pressed')
     except Exception as e:
         await message.answer(f'Error: {e}')
+        logging.error(e)

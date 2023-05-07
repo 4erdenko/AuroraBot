@@ -19,7 +19,7 @@ def create_token():
 if __name__ == '__main__':
     # Set up logging configuration
     logging.basicConfig(
-        level=logging.DEBUG,
+        level=logging.INFO,
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     )
     create_token()
