@@ -37,7 +37,7 @@ async def process_info_command(message: aiogram.types.Message):
     """
     try:
         await message.answer(get_message())
-        logging.info('ℹ️Info button pressed')
+        logging.info('ℹ️Info sent')
     except Exception as e:
         await message.answer(f'Error: {e}')
         logging.error(e)
