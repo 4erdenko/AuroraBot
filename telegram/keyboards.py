@@ -9,3 +9,7 @@ keyboard.add(KeyboardButton('ℹ️Info'))
 ban_keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
 ban_keyboard.add(KeyboardButton('🟢 ON'), KeyboardButton('🔴 OFF'))
 ban_keyboard.add(KeyboardButton('🔙 Back'))
+# Info keyboard with *️⃣ Summary and 🪪 Licenses buttons and 🔙 Back button
+# info_keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
+# info_keyboard.add(KeyboardButton('*️⃣ Summary'), KeyboardButton('🪪 Licenses'))
+# info_keyboard.add(KeyboardButton('🔙 Back'))

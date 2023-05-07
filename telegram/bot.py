@@ -1,3 +1,4 @@
+import asyncio
 import logging
 
 import aiogram
@@ -20,7 +21,7 @@ async def process_start_command(message: aiogram.types.Message):
     """
     try:
         await message.answer(
-            '🤖 Hello! I am glad to help you get short info '
+            '🤖 Hello!\nI am glad to help you get short info '
             'about your Aurora farm.',
             reply_markup=keyboard,
         )
@@ -36,8 +37,62 @@ async def process_info_command(message: aiogram.types.Message):
     Handle the ℹ️Info button and send a message with the current bot status.
     """
     try:
-        await message.answer(get_message())
-        logging.info('ℹ️Info sent')
+        await message.answer(get_message(), reply_markup=keyboard)
+        logging.info('ℹ️Info button processed')
     except Exception as e:
         await message.answer(f'Error: {e}')
         logging.error(e)
+
+
+# @dp.message_handler(Text(equals=['*️⃣ Summary']))
+# async def process_summary_command(message: aiogram.types.Message):
+#     """
+#     Handle the *️⃣ Summary button and send a message with the
+#     current bot status.
+#     :param message: The message from the user.
+#     :return: A message
+#     """
+#     try:
+#         await message.answer(
+#             get_message(),
+#         )
+#         logging.info('*️⃣ Summary button processed')
+#     except Exception as e:
+#         await message.answer(f'Error: {e}')
+#         logging.error(e)
+
+
+# @dp.message_handler(Text(equals=['🪪 Licenses']))
+# async def process_licenses_command(message: aiogram.types.Message):
+#     """
+#     Handle the 🪪 Licenses button and send a message with the
+#     current bot status.
+#     :param message: The message from the user.
+#     :return: A message of licenses
+#     """
+#     try:
+#         await message.answer(
+#             get_valid_licenses(),
+#         )
+#         logging.info('🪪 Licenses button processed')
+#     except Exception as e:
+#         await message.answer(f'Error: {e}')
+#         logging.error(e)
+
+
+# @dp.message_handler(Text(equals=['🔙 Back']))
+# async def process_back_command(message: aiogram.types.Message):
+#     """
+#
+#     :param message:
+#     :return:
+#     """
+#     try:
+#         await message.answer('Back to main menu🔙',
+#                                         reply_markup=keyboard)
+#         logging.info('Back button processed')
+#         await asyncio.sleep(1)
+#
+#     except Exception as e:
+#         await message.answer(f'Error: {e}')
+#         logging.error(e)
