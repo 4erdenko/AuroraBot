@@ -4,10 +4,9 @@ import os
 import requests
 
 from settings.config import (
-    LOGIN,
-    PASSWORD,
     check_credentials,
     credentials_path,
+    load_credentials,
 )
 
 
@@ -44,6 +43,7 @@ def update_aurora_token():
             headers=get_headers(),
         )
         if account_info.status_code == 401:
+            LOGIN, PASSWORD = load_credentials()[:2]
             AURORA_TOKEN = (
                 requests.post(
                     'https://aurorabot.net/api/v2/user/login',
