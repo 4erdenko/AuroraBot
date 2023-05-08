@@ -174,6 +174,7 @@ def get_message():
     Get bots status and return a formatted message.
     :return:  A formatted message with bots status.
     """
+    update_aurora_token()
     try:
         licenses = get_valid_licenses()
         info = get_bots_status()
@@ -219,3 +220,5 @@ def get_message():
 
     )
     return message_text
+
+print(get_message())
