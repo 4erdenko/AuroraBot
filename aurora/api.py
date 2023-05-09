@@ -1,11 +1,8 @@
 import logging
-from pprint import pprint
 
 import requests
 
 from aurora.token import get_headers, update_aurora_token
-
-token = update_aurora_token()
 
 
 def get_bots_status():
@@ -220,5 +217,3 @@ def get_message():
 
     )
     return message_text
-
-print(get_message())

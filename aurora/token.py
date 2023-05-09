@@ -36,7 +36,7 @@ def update_aurora_token():
     :return: A new Aurora token.
     """
     AURORA_TOKEN = get_credentials().get('AURORA_TOKEN')
-
+    print('Updating Aurora token...')
     if check_credentials():
         account_info = requests.get(
             'https://aurorabot.net/api/v2/license/summary',
