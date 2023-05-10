@@ -229,5 +229,3 @@ def get_message():
     )
     return message_text
 
-
-print(get_message())
