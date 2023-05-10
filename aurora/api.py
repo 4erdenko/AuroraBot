@@ -66,10 +66,11 @@ def get_extented_info():
     full_info = get_full_info()
     if full_info is None:
         return None
-
+    list_more_than_30 = []
     list_more_than_25 = []
     list_less_than_25 = []
     list_more_than_50000 = []
+    list_more_than_40000 = []
     list_more_than_30000 = []
     list_region_ru_in_game = []
     list_region_euw_in_game = []
@@ -77,13 +78,17 @@ def get_extented_info():
     # unnamed_server = 'Unnamed Server'
 
     for account in full_info:
-        if account['level'] >= 25:
+        if account['level'] >= 30:
+            list_more_than_30.append(account)
+        elif account['level'] >= 25:
             list_more_than_25.append(account)
         elif 25 >= account['level'] >= 1:
             list_less_than_25.append(account)
 
         if account['blue_essence'] >= 50000:
             list_more_than_50000.append(account)
+        elif account['blue_essence'] >= 40000:
+            list_more_than_40000.append(account)
         elif account['blue_essence'] >= 30000:
             list_more_than_30000.append(account)
 
@@ -102,9 +107,11 @@ def get_extented_info():
         #     server_bot_counts[server] += 1
 
     final_dict = {
+        'more_than_30': len(list_more_than_30),
         'more_than_25': len(list_more_than_25),
         'less_than_25': len(list_less_than_25),
         'more_than_50000': len(list_more_than_50000),
+        'more_than_40000': len(list_more_than_40000),
         'more_than_30000': len(list_more_than_30000),
         'region_ru_in_game': len(list_region_ru_in_game),
         'region_euw_in_game': len(list_region_euw_in_game),
@@ -184,9 +191,11 @@ def get_message():
         # servers = extented_info.get('server_bot_counts')
         licenses_valid = licenses.get('valid')
         licenses_in_use = licenses.get('in_use')
+        more_than_30 = extented_info.get('more_than_30')
         more_than_25 = extented_info.get('more_than_25')
         less_than_25 = extented_info.get('less_than_25')
         more_than_50000 = extented_info.get('more_than_50000')
+        more_than_40000 = extented_info.get('more_than_40000')
         more_than_30000 = extented_info.get('more_than_30000')
         region_ru_in_game = extented_info.get('region_ru_in_game')
         region_euw_in_game = extented_info.get('region_euw_in_game')
@@ -208,12 +217,17 @@ def get_message():
         f'EUW in game: <code>{region_euw_in_game}</code>\n\n'
         f'💎<b>Information about accounts:</b>\n'
         f'Fresh accounts: <code>{fresh}</code>\n'
-        f'Finished accounts: <code>{finished}</code>\n'
         f'Banned accounts: <code>{banned}</code>\n'
+        f'Finished accounts: <code>{finished}</code>\n\n'
+        f'More than 30 level: <code>{more_than_30}</code>\n'
         f'More than 25 level: <code>{more_than_25}</code>\n'
-        f'Less than 25 level: <code>{less_than_25}</code>\n'
-        f'More than 50000 BE: <code>{more_than_50000}</code>\n'
-        f'More than 30000 BE: <code>{more_than_30000}</code>\n'
+        f'Less than 25 level: <code>{less_than_25}</code>\n\n'
+        f'More than 50.000 BE: <code>{more_than_50000}</code>\n'
+        f'More than 40.000 BE: <code>{more_than_40000}</code>\n'
+        f'More than 30.000 BE: <code>{more_than_30000}</code>\n'
 
     )
     return message_text
+
+
+print(get_message())
