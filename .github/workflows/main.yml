@@ -43,7 +43,7 @@ jobs:
         run: docker stop aurora_bot
 
   deploy:
-    needs: build-and-test
+    needs: build-test
     runs-on: ubuntu-latest
 
     steps:
