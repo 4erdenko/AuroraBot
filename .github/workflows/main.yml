@@ -34,13 +34,24 @@ jobs:
         run: docker build -t aurora_bot_image .
 
       - name: Run Docker container
-        run: docker run -d --name aurora_bot aurora_bot_image
+        run: docker run -d --name aurora_bot aurora_bot_image python3 main.py
+
+      - name: Check if container is still running
+        run: |
+          if ! docker ps --filter "name=aurora_bot" --filter "status=running" | grep -q aurora_bot; then
+            echo "Container stopped unexpectedly";
+            exit 1;
+          fi
+
+      - name: Wait for bot to initialize
+        run: sleep 60
 
       - name: Check Docker logs
         run: docker logs aurora_bot
 
       - name: Stop Docker container
         run: docker stop aurora_bot
+
 
   deploy:
     needs: build-test
@@ -73,4 +84,5 @@ jobs:
             sudo docker rm aurora_bot || true
             sudo docker build -t aurora_bot_image .
             sudo docker run -d --restart=unless-stopped --name aurora_bot aurora_bot_image
+            sudo docker image prune -f
 
