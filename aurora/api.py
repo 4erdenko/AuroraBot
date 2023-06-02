@@ -225,7 +225,5 @@ def get_message():
         f'More than 50.000 BE: <code>{more_than_50000}</code>\n'
         f'More than 40.000 BE: <code>{more_than_40000}</code>\n'
         f'More than 30.000 BE: <code>{more_than_30000}</code>\n'
-
     )
     return message_text
-

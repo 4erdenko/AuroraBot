@@ -1,6 +1,8 @@
 # AuroraBot
 
-AuroraBot is a Python-based project that allows you to interact with the Aurora API through a Telegram bot. The bot is designed to provide users with an intuitive and user-friendly interface to interact with Aurora API services without the need for complex API calls or direct interaction with the API.
+AuroraBot is a Python-based project that allows you to interact with the Aurora API through a Telegram bot. The bot is
+designed to provide users with an intuitive and user-friendly interface to interact with Aurora API services without the
+need for complex API calls or direct interaction with the API.
 
 ## Features
 
@@ -48,7 +50,8 @@ pip install -r requirements.txt
 
 Alternatively, you can enter the credentials when prompted by running `main.py`.
 
-5. (Optional) Create a `.env` file with the required environment variables. In the root of the project, create a `.env` file with the following lines:
+5. (Optional) Create a `.env` file with the required environment variables. In the root of the project, create a `.env`
+   file with the following lines:
 
 ```
 LOGIN=

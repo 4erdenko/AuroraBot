@@ -3,11 +3,8 @@ import os
 
 import requests
 
-from settings.config import (
-    check_credentials,
-    credentials_path,
-    load_credentials,
-)
+from settings.config import (check_credentials, credentials_path,
+                             load_credentials)
 
 
 def get_credentials():
