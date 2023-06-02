@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  backend_tests:
+  flake8:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -23,7 +23,7 @@ jobs:
       - name: Test with flake8
         run: |
           python -m flake8 .
-  build-and-test:
+  build-test:
     runs-on: ubuntu-latest
 
     steps:
