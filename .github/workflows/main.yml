@@ -44,7 +44,7 @@ jobs:
           fi
 
       - name: Wait for bot to initialize
-        run: sleep 60
+        run: sleep 10
 
       - name: Check Docker logs
         run: docker logs aurora_bot
