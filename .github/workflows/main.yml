@@ -34,7 +34,7 @@ jobs:
         run: docker build -t aurora_bot_image .
 
       - name: Run Docker container
-        run: docker run -d --name aurora_bot aurora_bot_image python3 main.py
+        run: docker run -d -e LOGIN=${{ secrets.BOT_LOGIN }} -e PASSWORD=${{ secrets.BOT_PASSWORD }} -e TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }} --name aurora_bot aurora_bot_image python3 main.py
 
       - name: Check if container is still running
         run: |
